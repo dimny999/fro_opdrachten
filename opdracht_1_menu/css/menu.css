@@ -1,0 +1,156 @@
+body{
+  margin: 0;
+  font-family: sans-serif;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+nav{
+  background-color: lightgrey;
+  color: darkgrey;
+}
+
+.toggle-menu{
+  background: black;
+  cursor: pointer;
+  padding: 1em;
+  display: block;
+  text-align: right;
+}
+
+#toggle-menu{
+  display: none;
+}
+
+#toggle-menu:checked ~ ul a{
+  font-size: 1em;
+  height: 1em;
+  line-height: 1em;
+  transform: scaleY(1);
+  border-bottom: 1px solid #eee;
+}
+
+#toggle-menu:checked ~ .toggle-menu .fa-times{
+  display: block;
+}
+
+.fa-times{
+  display: none;
+}
+
+#toggle-menu:checked ~ .toggle-menu .fa-bars{
+  display: none;
+}
+
+
+nav ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav a{
+  display: block;
+  color: darkgrey;
+  text-decoration: none;
+  padding: 1em;
+  border-bottom: 1px solid #eee;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  transform: scaleY(0);
+  transition: all 0.7s ease-out;
+}
+
+nav a:hover{
+color: white;
+background: black;
+}
+
+.sub-menu ul{
+  padding-left: .5em;
+  border-left: 5px double red;
+}
+
+#nav .sub-menu li a{
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  transform: scaleY(0);
+  border-bottom-width: 0;
+  transition: all .5s ease-out;
+}
+
+#nav .sub-menu:hover li a{
+  font-size: 1em;
+  height: 1em;
+  line-height: 1em;
+  transform: scaleY(1);
+  border-bottom-width: 1px;
+}
+
+.sub-menu > a{
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.sub-menu > a::after{
+  font-family: "font Awesome\ 5 Free";
+  font-weight: 900;
+  content: "\f0d7";
+}
+
+.sub-menu:hover > a::after{
+  content: "\f150";
+}
+
+main{
+  padding: 1em;
+}
+
+footer{
+  padding: 1em;
+  background: #333;
+  color: #ddd;
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+@media screen and (min-width: 40em) {
+  nav > ul{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+  }
+  .toggle-menu{
+    display: none;
+  }
+
+  nav a{
+    font-size: 1em;
+    height: 1em;
+    line-height: 1em;
+    transform: scaleY(1);
+  }
+
+  .sub-menu{
+    position: relative;
+  }
+
+
+  .sub-menu ul{
+    position: absolute;
+    border-left: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .sub-menu a{
+      background-color: #333;
+  }
+
+  nav > ul > li:not(:first-child) a{
+    border-left: 10px solid #eee;
+  }
+
+}
